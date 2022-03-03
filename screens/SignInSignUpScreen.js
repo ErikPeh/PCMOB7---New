@@ -8,6 +8,7 @@ import {
   UIManager,
   ActivityIndicator,
   Keyboard,
+  Platform,
 } from "react-native";
 import { API, API_LOGIN } from "../constants/API";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -56,7 +57,7 @@ export default function SignInSignUpScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Log In</Text>
+      <Text style={styles.title}>Welcome</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
