@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   Keyboard,
   Platform,
+  LayoutAnimation,
 } from "react-native";
 import { API, API_LOGIN } from "../constants/API";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -26,6 +27,7 @@ export default function SignInSignUpScreen({ navigation }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const [isLogIn, setIsLogIn] = useState(true);
 
   async function login() {
     console.log("---- Login time ----");
@@ -57,7 +59,7 @@ export default function SignInSignUpScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
+      <Text style={styles.title}>{isLogIn ? "Welcome" : "Sign Up"}</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
@@ -78,11 +80,28 @@ export default function SignInSignUpScreen({ navigation }) {
           onChangeText={(pw) => setPassword(pw)}
         />
       </View>
+      {isLogIn ? (
+        <View />
+      ) : (
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Confirm Password:"
+            placeholderTextColor="#003f5c"
+            placeholderTextColor="grey"
+            secureTextEntry={true}
+            onChangeText={(pw) => setConfirmPassword(pw)}
+          />
+        </View>
+      )}
       <View />
       <View>
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity style={styles.button} onPress={login}>
-            <Text style={styles.buttonText}> Log In </Text>
+            <Text style={styles.buttonText}>
+              {" "}
+              {isLogIn ? "Log In" : "Sign Up"}{" "}
+            </Text>
           </TouchableOpacity>
           {loading ? (
             <ActivityIndicator style={{ marginLeft: 10 }} />
@@ -92,6 +111,24 @@ export default function SignInSignUpScreen({ navigation }) {
         </View>
       </View>
       <Text style={styles.errorText}>{errorText}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          LayoutAnimation.configureNext({
+            duration: 700,
+            create: { type: "linear", property: "opacity" },
+            update: { type: "spring", springDamping: 0.4 },
+          });
+          setIsLogIn(!isLogIn);
+          setErrorText("");
+        }}
+      >
+        <Text style={styles.switchText}>
+          {" "}
+          {isLogIn
+            ? "No account? Sign up now."
+            : "Already have an account? Log in here."}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -112,6 +149,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 20,
     marginTop: 20,
+    textShadowColor: "grey",
   },
   inputView: {
     backgroundColor: "lightblue",
