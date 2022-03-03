@@ -63,7 +63,7 @@ export default function SignInSignUpScreen({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
-          placeholder="Username:"
+          placeholder="Username"
           placeholderTextColor="grey"
           value={username}
           onChangeText={(username) => setUsername(username)}
@@ -73,7 +73,7 @@ export default function SignInSignUpScreen({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
-          placeholder="Password:"
+          placeholder="Password"
           placeholderTextColor="grey"
           secureTextEntry={true}
           value={password}
@@ -86,7 +86,7 @@ export default function SignInSignUpScreen({ navigation }) {
         <View style={styles.inputView}>
           <TextInput
             style={styles.textInput}
-            placeholder="Confirm Password:"
+            placeholder="Confirm Password"
             placeholderTextColor="#003f5c"
             placeholderTextColor="grey"
             secureTextEntry={true}
@@ -114,9 +114,9 @@ export default function SignInSignUpScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           LayoutAnimation.configureNext({
-            duration: 700,
+            duration: 1500,
             create: { type: "linear", property: "opacity" },
-            update: { type: "spring", springDamping: 0.4 },
+            update: { type: "easeInEaseOut", duration: 1000 },
           });
           setIsLogIn(!isLogIn);
           setErrorText("");
@@ -124,9 +124,7 @@ export default function SignInSignUpScreen({ navigation }) {
       >
         <Text style={styles.switchText}>
           {" "}
-          {isLogIn
-            ? "No account? Sign up now."
-            : "Already have an account? Log in here."}
+          {isLogIn ? "Sign up for a new account!" : "Back to login"}
         </Text>
       </TouchableOpacity>
     </View>
