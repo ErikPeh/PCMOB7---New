@@ -1,20 +1,30 @@
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  UIManager,
+  ActivityIndicator,
+  Keyboard,
+} from "react-native";
+import { API, API_LOGIN } from "../constants/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, UIManager, ActivityIndicator, Keyboard } from 'react-native';
-import { API, API_LOGIN } from '../constants/API';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
-
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 } //Needs to be manually enabled for android
 
 export default function SignInSignUpScreen({ navigation }) {
-
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [errorText, setErrorText] = useState('')
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   async function login() {
     console.log("---- Login time ----");
@@ -38,49 +48,49 @@ export default function SignInSignUpScreen({ navigation }) {
       console.log("Error logging in!");
       console.log(error);
       setErrorText(error.response.data.description);
-      if (error.response.status = 404) {
-        setErrorText("User does not exist")
+      if ((error.response.status = 404)) {
+        setErrorText("User does not exist");
       }
     }
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        Log In
-      </Text>
+      <Text style={styles.title}>Log In</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
           placeholder="Username:"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="grey"
           value={username}
           onChangeText={(username) => setUsername(username)}
         />
       </View>
-  
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
           placeholder="Password:"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="grey"
           secureTextEntry={true}
           value={password}
           onChangeText={(pw) => setPassword(pw)}
         />
       </View>
-      <View/>
+      <View />
       <View>
-        <View style={{flexDirection: "row"}}>
+        <View style={{ flexDirection: "row" }}>
           <TouchableOpacity style={styles.button} onPress={login}>
             <Text style={styles.buttonText}> Log In </Text>
           </TouchableOpacity>
-          {loading ? <ActivityIndicator style={{ marginLeft: 10 }}/> : <View/>}
+          {loading ? (
+            <ActivityIndicator style={{ marginLeft: 10 }} />
+          ) : (
+            <View />
+          )}
         </View>
       </View>
-      <Text style={styles.errorText}>
-        {errorText}
-      </Text>
+      <Text style={styles.errorText}>{errorText}</Text>
     </View>
   );
 }
@@ -88,22 +98,22 @@ export default function SignInSignUpScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "cornflowerblue",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 40, 
-    margin: 20
+    fontWeight: "bold",
+    fontSize: 40,
+    margin: 20,
   },
   switchText: {
-    fontWeight: '400',
-    fontSize: 20, 
-    marginTop: 20
+    fontWeight: "400",
+    fontSize: 20,
+    marginTop: 20,
   },
   inputView: {
-    backgroundColor: "#FFC0CB",
+    backgroundColor: "lightblue",
     borderRadius: 30,
     width: "70%",
     height: 45,
@@ -116,18 +126,18 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: "black",
     borderRadius: 25,
   },
   buttonText: {
-    fontWeight: '400',
-    fontSize: 20, 
+    fontWeight: "400",
+    fontSize: 20,
     margin: 20,
-    color: 'white'
+    color: "white",
   },
   errorText: {
     fontSize: 15,
-    color: 'red',
-    marginTop: 20
-  }
+    color: "red",
+    marginTop: 20,
+  },
 });
