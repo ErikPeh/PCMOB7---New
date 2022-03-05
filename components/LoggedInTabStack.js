@@ -30,6 +30,7 @@ export default function LoggedInStack() {
           },
           null,
         ],
+        headerShown: false,
       })}
     >
       <Tab.Screen name="Blog" component={BlogStack} />
