@@ -7,6 +7,8 @@ import {
   Switch,
   TouchableOpacity,
   Image,
+  Animated,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { API, API_WHOAMI } from "../constants/API";
@@ -20,6 +22,8 @@ export default function AccountScreen({ navigation }) {
   const token = useSelector((state) => state.auth.token);
 
   const isDark = useSelector((state) => state.accountPrefs.isDark);
+
+  const picSize = new Animated.Value(150);
   const profilePicture = useSelector(
     (state) => state.accountPrefs.profilePicture
   );
@@ -51,6 +55,23 @@ export default function AccountScreen({ navigation }) {
     }
   }
 
+  function changePicSize() {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(picSize, {
+          toValue: 250,
+          duration: 1500,
+          useNativeDriver: false,
+        }),
+        Animated.timing(picSize, {
+          toValue: 150,
+          duration: 1500,
+          useNativeDriver: false,
+        }),
+      ])
+    ).start();
+  }
+
   function signOut() {
     dispatch(logOutAction());
     navigation.navigate("SignInSignUp");
@@ -76,10 +97,12 @@ export default function AccountScreen({ navigation }) {
         {" "}
         Hello {username} !
       </Text>
-      <Image
-        source={{ uri: profilePicture }}
-        style={{ width: 200, height: 200, borderRadius: 200 }}
-      />
+      <TouchableWithoutFeedback onPress={changePicSize}>
+        <Animated.Image
+          source={{ uri: profilePicture }}
+          style={{ width: picSize, height: picSize, borderRadius: 200 }}
+        />
+      </TouchableWithoutFeedback>
       <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
         <Text style={{ marginTop: 10, fontSize: 20, color: "#0000EE" }}>
           {" "}
