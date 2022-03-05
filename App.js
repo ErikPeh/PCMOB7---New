@@ -6,14 +6,17 @@ import { StyleSheet } from "react-native";
 import { Provider, useSelector } from "react-redux";
 import store from "./redux/configureStore";
 import SignInSignUpScreen from "./screens/SignInSignUpScreen";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createStackNavigator();
 
 function App() {
   const token = useSelector((state) => state.auth.token);
+  const isDark = useSelector((state) => state.accountPrefs.isDark);
   console.log(token);
   return (
     <NavigationContainer>
+      <StatusBar style={isDark ? "light" : "dark"} />
       <Stack.Navigator
         initialRouteName={token != null ? "Logged In" : "SignInSignUp"}
         screenOptions={{
