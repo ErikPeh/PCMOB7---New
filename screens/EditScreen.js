@@ -49,7 +49,7 @@ export default function EditScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={{ margin: 20 }}>
-        <Text style={[additionalStyles.label, styles.text]}>Enter Title:</Text>
+        <Text style={[additionalStyles.label, styles.text]}>Enter Title :</Text>
         <TextInput
           style={additionalStyles.input}
           value={title}
