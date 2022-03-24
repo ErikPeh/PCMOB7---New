@@ -140,7 +140,7 @@ export default function AccountScreen({ navigation }) {
         style={{ ...styles.button, marginTop: 30 }}
         onPress={() => picSize.stopAnimation()}
       >
-        <Text style={styles.buttonText}>Stop Animation</Text>
+        <Text style={styles.buttonText}>Stop Picture Animation</Text>
       </TouchableOpacity>
     </View>
   );

@@ -118,7 +118,6 @@ export default function SignInSignUpScreen({ navigation }) {
           <TextInput
             style={styles.textInput}
             placeholder="Confirm Password"
-            placeholderTextColor="#003f5c"
             placeholderTextColor="grey"
             secureTextEntry={true}
             onChangeText={(pw) => setConfirmPassword(pw)}

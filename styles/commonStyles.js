@@ -10,6 +10,7 @@ export const commonStyles = {
     fontSize: 20,
     margin: 10,
     color: "white",
+    textAlign: "center",
   },
   title: {
     fontWeight: "bold",
