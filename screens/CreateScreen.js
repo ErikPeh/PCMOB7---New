@@ -39,15 +39,15 @@ export default function CreateScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={{ margin: 20 }}>
-        <Text style={[additionalStyles.label, styles.text]}>Enter Title:</Text>
+        <Text style={[additionalStyles.label, styles.text]}>
+          Type Of Expense :
+        </Text>
         <TextInput
           style={additionalStyles.input}
           value={title}
           onChangeText={(text) => setTitle(text)}
         />
-        <Text style={[additionalStyles.label, styles.text]}>
-          Enter Content:
-        </Text>
+        <Text style={[additionalStyles.label, styles.text]}>Amount :</Text>
         <TextInput
           style={additionalStyles.input}
           value={content}

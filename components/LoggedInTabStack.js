@@ -20,7 +20,6 @@ export default function LoggedInStack() {
           } else if (route.name === "Settings") {
             iconName = "cog";
           }
-          // You can return any component that you like here!
           return <FontAwesome name={iconName} size={size} color={color} />;
         },
 

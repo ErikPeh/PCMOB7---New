@@ -19,7 +19,6 @@ export default function IndexScreen({ navigation, route }) {
   const styles = isDark ? darkStyles : lightStyles;
   const token = useSelector((state) => state.auth.token);
 
-  // This is to set up the top right button
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -101,6 +100,7 @@ export default function IndexScreen({ navigation, route }) {
           }}
         >
           <Text style={styles.text}>{item.title}</Text>
+          <Text style={styles.text}>{item.content}</Text>
           <TouchableOpacity onPress={() => deletePost(item.id)}>
             <FontAwesome name="trash" size={20} color="red" />
           </TouchableOpacity>
