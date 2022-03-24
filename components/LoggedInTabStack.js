@@ -15,8 +15,8 @@ export default function LoggedInStack() {
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
-          if (route.name === "Blog") {
-            iconName = "comments";
+          if (route.name === "Expenses") {
+            iconName = "dollar";
           } else if (route.name === "Settings") {
             iconName = "cog";
           }
@@ -35,7 +35,7 @@ export default function LoggedInStack() {
         headerShown: false,
       })}
     >
-      <Tab.Screen name="Blog" component={BlogStack} />
+      <Tab.Screen name="Expenses" component={BlogStack} />
       <Tab.Screen name="Settings" component={AccountStack} />
     </Tab.Navigator>
   );
