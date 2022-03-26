@@ -47,7 +47,7 @@ export default function CreateScreen({ navigation }) {
           value={title}
           onChangeText={(text) => setTitle(text)}
         />
-        <Text style={[additionalStyles.label, styles.text]}>Amount :</Text>
+        <Text style={[additionalStyles.label, styles.text]}>Amount : $</Text>
         <TextInput
           style={additionalStyles.input}
           value={content}
