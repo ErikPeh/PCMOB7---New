@@ -57,7 +57,7 @@ export default function ShowScreen({ navigation, route }) {
         {post.title}
       </Text>
       <Text style={[styles.content, styles.text, { margin: 20 }]}>
-        {post.content}
+        {parseFloat(post.content)}
       </Text>
     </View>
   );

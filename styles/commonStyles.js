@@ -17,6 +17,10 @@ export const commonStyles = {
     fontSize: 30,
     textAlign: "center",
   },
+  total: {
+    fontWeight: "bold",
+    fontSize: 36,
+  },
   content: {
     fontWeight: "400",
     fontSize: 24,
@@ -44,6 +48,11 @@ export const lightStyles = {
     color: "black",
   },
   headerTint: "#f55",
+  totalText: {
+    color: "red",
+    fontSize: 28,
+    fontWeight: "700",
+  },
 };
 
 export const darkStyles = {
@@ -67,4 +76,9 @@ export const darkStyles = {
     color: "#f4d47c",
   },
   headerTint: "#f4d47c",
+  totalText: {
+    color: "#f4d47c",
+    fontSize: 28,
+    fontWeight: "700",
+  },
 };

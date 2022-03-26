@@ -18,6 +18,7 @@ export default function IndexScreen({ navigation, route }) {
   const isDark = useSelector((state) => state.accountPrefs.isDark);
   const styles = isDark ? darkStyles : lightStyles;
   const token = useSelector((state) => state.auth.token);
+  const [total, setTotal] = useState("");
 
   useEffect(() => {
     navigation.setOptions({
@@ -51,6 +52,13 @@ export default function IndexScreen({ navigation, route }) {
       });
       console.log(response.data);
       setPosts(response.data);
+      const totalExpense = response.data.map((post) =>
+        parseFloat(post.content)
+      );
+      const sum = totalExpense.reduce((partialSum, a) => partialSum + a, 0);
+      console.log(totalExpense);
+      console.log(sum);
+      setTotal(sum);
       return "completed";
     } catch (error) {
       console.log(error.response.data);
@@ -125,6 +133,9 @@ export default function IndexScreen({ navigation, route }) {
           />
         }
       />
+      <Text style={[styles.totalText, { margin: 20 }]}>
+        Total Expenses : {total}
+      </Text>
     </View>
   );
 }
