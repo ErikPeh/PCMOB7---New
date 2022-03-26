@@ -90,7 +90,7 @@ export default function SignInSignUpScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{isLogIn ? "Welcome" : "Sign Up"}</Text>
+      <Text style={styles.title}>{isLogIn ? "Hello Potatos!" : "Sign Up"}</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}

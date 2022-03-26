@@ -103,16 +103,14 @@ export default function AccountScreen({ navigation }) {
         }}
       >
         {profilePicture && (
-          <TouchableWithoutFeedback onPress={changePicSize}>
-            <Animated.Image
-              source={{ uri: profilePicture }}
-              style={{
-                width: picSize.interpolate(sizeInterpolation),
-                height: picSize.interpolate(sizeInterpolation),
-                borderRadius: 200,
-              }}
-            />
-          </TouchableWithoutFeedback>
+          <Animated.Image
+            source={{ uri: profilePicture }}
+            style={{
+              width: picSize.interpolate(sizeInterpolation),
+              height: picSize.interpolate(sizeInterpolation),
+              borderRadius: 200,
+            }}
+          />
         )}
       </View>
       <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
@@ -135,12 +133,6 @@ export default function AccountScreen({ navigation }) {
       </View>
       <TouchableOpacity style={[styles.button]} onPress={signOut}>
         <Text style={styles.buttonText}>Sign Out</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{ ...styles.button, marginTop: 30 }}
-        onPress={() => picSize.stopAnimation()}
-      >
-        <Text style={styles.buttonText}>Stop Picture Animation</Text>
       </TouchableOpacity>
     </View>
   );
