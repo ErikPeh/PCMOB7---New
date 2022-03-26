@@ -56,7 +56,7 @@ export default function ShowScreen({ navigation, route }) {
       <Text style={[styles.title, styles.text, { margin: 40 }]}>
         {post.title}
       </Text>
-      <Text style={[styles.content, styles.text, { margin: 20 }]}>
+      <Text style={[styles.detailsContent, styles.text, { margin: 20 }]}>
         {parseFloat(post.content)}
       </Text>
     </View>

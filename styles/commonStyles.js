@@ -25,6 +25,11 @@ export const commonStyles = {
     fontWeight: "400",
     fontSize: 24,
   },
+  detailsContent: {
+    fontWeight: "400",
+    fontSize: 24,
+    textAlign: "center",
+  },
 };
 
 export const lightStyles = {

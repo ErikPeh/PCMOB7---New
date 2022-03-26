@@ -134,7 +134,7 @@ export default function IndexScreen({ navigation, route }) {
         }
       />
       <Text style={[styles.totalText, { margin: 20 }]}>
-        Total Expenses : {total}
+        Total Expenses : ${total}
       </Text>
     </View>
   );
